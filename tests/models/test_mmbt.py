@@ -33,6 +33,7 @@ class TestMMBTTorchscript(unittest.TestCase):
         config.model_config[model_name]["num_labels"] = 2
         self.finetune_model = model_class(config.model_config[model_name])
         self.finetune_model.build()
+        self.finetune_model.init_losses()
 
     def test_load_save_finetune_model(self):
         self.assertTrue(test_utils.verify_torchscript_models(self.finetune_model))
